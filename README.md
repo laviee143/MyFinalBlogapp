@@ -1,12 +1,9 @@
-# React + Vite
+Welcome to Our Blog App! 🎉
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Hey there! Thanks for checking out my little blog project! This is a cozy corner where we share stories, tips, and insights—starting with cool stuff like breaking into product design. Built with love using React and Tailwind CSS, this app is all about showcasing blog posts in a clean, responsive way. Let’s dive in!
 
-Currently, two official plugins are available:
+What’s This All About? 🤔
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+This app lets you browse featured blog posts and a grid of recent ones. We’ve got a slick homepage with a standout featured section and a scrollable list of recent posts. Each post links to a detailed view where you can (well, soon!) edit, save, or delete—though for now, those buttons are just for show. 😄
+<img width="1890" height="749" alt="image" src="https://github.com/user-attachments/assets/70b30b24-c918-4eae-ad60-bdbceaba7386" />
+<img width="472" height="851" alt="image" src="https://github.com/user-attachments/assets/83adcb35-e1b9-4b6e-94c6-01704c021ba5" />
