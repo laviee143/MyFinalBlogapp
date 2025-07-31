@@ -1,22 +1,33 @@
+// src/components/BlogCard.jsx
 import { Link } from "react-router-dom";
 
-function BlogCard({ post }) {
+export default function BlogCard({ post }) {
   return (
-    <Link to={`/blog/${post.id}`}>
-      <div className="p-4 border rounded-lg shadow-lg hover:shadow-xl transition">
-        <img
-          src={post.image || "https://via.placeholder.com/300x200"}
-          alt={post.title}
-          className="w-full h-48 object-cover rounded-lg mb-2"
-        />
-        <h2 className="text-xl font-semibold">{post.title}</h2>
-        <p className="text-sm text-gray-600">
-          By {post.author} on {new Date(post.createdAt).toLocaleDateString()}
-        </p>
-        <p className="text-gray-700">{post.description}</p>
-      </div>
-    </Link>
+    <div className="relative bg-white shadow rounded-lg p-4">
+      <Link to={`/post/${post.id}`}>
+        <div className="space-y-2">
+          {/* Author and date */}
+          <div>
+            <p className="text-sm font-medium">{post.author}</p>
+            <p className="text-xs text-gray-500">
+              {new Date(post.createdAt).toLocaleDateString()}
+            </p>
+          </div>
+
+          {/* Title */}
+          <h2 className="text-lg font-semibold">{post.title}</h2>
+
+          {/* Image */}
+          <img
+            src={post.image}
+            alt={post.title}
+            className="w-full h-40 object-cover rounded"
+          />
+
+          {/* Short description */}
+          <p className="text-gray-700">{post.description.slice(0, 100)}...</p>
+        </div>
+      </Link>
+    </div>
   );
 }
-
-export default BlogCard;
