@@ -1,4 +1,4 @@
-Welcome to Our Blog App! 🎉
+Welcome to My Blog App! 🎉
 
 Hey there! Thanks for checking out my little blog project! This is a cozy corner where we share stories, tips, and insights—starting with cool stuff like breaking into product design. Built with love using React and Tailwind CSS, this app is all about showcasing blog posts in a clean, responsive way. Let’s dive in!
 
