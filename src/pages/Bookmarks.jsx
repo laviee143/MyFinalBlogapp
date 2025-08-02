@@ -31,14 +31,15 @@ export default function Bookmarks() {
             key={post.id}
             className="bg-white shadow rounded-lg p-6 space-y-4 relative"
           >
-            {/* Top Row: Author + Bookmark */}
+            {/* Author and Bookmark Row */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <img
-                  src={post.profileLink || "https://via.placeholder.com/40"}
+                  src={post.authorImage || "https://via.placeholder.com/40"}
                   alt={post.author}
                   className="w-10 h-10 rounded-full object-cover"
                 />
+
                 <div>
                   <p className="text-sm font-semibold">{post.author}</p>
                   <p className="text-xs text-gray-500">
@@ -46,6 +47,7 @@ export default function Bookmarks() {
                   </p>
                 </div>
               </div>
+
               <button
                 onClick={() => removeBookmark(post.id)}
                 title="Remove Bookmark"
@@ -54,7 +56,7 @@ export default function Bookmarks() {
               </button>
             </div>
 
-            {/* Entire Blog Content is Clickable */}
+            {/* Blog Preview */}
             <Link to={`/post/${post.id}`}>
               <h2 className="text-2xl font-semibold leading-tight">
                 {post.title}

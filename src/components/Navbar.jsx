@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import PostBlogModal from "./PostBlogModal"; // Adjust path if necessary
+import PostBlogModal from "./PostBlogModal";
 
-function Navbar() {
+function Navbar({ addPost }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -40,7 +40,15 @@ function Navbar() {
           Post a Blog
         </button>
       </div>
-      {isModalOpen && <PostBlogModal onClose={() => setIsModalOpen(false)} />}
+      {isModalOpen && (
+        <PostBlogModal
+          onClose={() => setIsModalOpen(false)}
+          addPost={(newPost) => {
+            addPost(newPost);
+            setIsModalOpen(false);
+          }}
+        />
+      )}
     </nav>
   );
 }

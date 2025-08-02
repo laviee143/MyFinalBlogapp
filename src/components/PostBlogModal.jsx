@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function PostBlogModal({ onClose }) {
+function PostBlogModal({ onClose, addPost }) {
   const [formData, setFormData] = useState({
     author: "",
     date: "",
@@ -11,17 +11,43 @@ function PostBlogModal({ onClose }) {
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log("Blog posted:", formData);
+
+    const newBlog = {
+      id: Date.now(),
+      author: formData.author,
+      date: formData.date,
+      profileLink: formData.profileLink,
+      title: formData.title,
+      description: formData.description,
+      content: formData.content,
+      image: "https://via.placeholder.com/300x200", // ✅ Placeholder image added
+    };
+
+    addPost(newBlog);
+
+    setFormData({
+      author: "",
+      date: "",
+      profileLink: "",
+      title: "",
+      description: "",
+      content: "",
+    });
+
     onClose();
   };
 
   return (
-    <div className="fixed inset-0  flex items-center justify-center z-50">
+    <div className="fixed inset-0 flex items-center justify-center z-50 ">
       <div className="bg-white p-6 rounded-lg shadow-lg w-96">
         <h2 className="text-2xl font-bold mb-4">Post a Blog</h2>
         <form onSubmit={handleSubmit}>
@@ -35,6 +61,7 @@ function PostBlogModal({ onClose }) {
                 onChange={handleChange}
                 className="w-full border rounded p-2"
                 placeholder="Full name"
+                required
               />
             </div>
             <div>
@@ -45,9 +72,11 @@ function PostBlogModal({ onClose }) {
                 value={formData.date}
                 onChange={handleChange}
                 className="w-full border rounded p-2"
+                required
               />
             </div>
           </div>
+
           <div className="mb-4">
             <label className="block text-sm font-medium">Profile Link</label>
             <input
@@ -59,6 +88,7 @@ function PostBlogModal({ onClose }) {
               placeholder="https://www.example.com"
             />
           </div>
+
           <div className="mb-4">
             <label className="block text-sm font-medium">Title</label>
             <input
@@ -67,8 +97,10 @@ function PostBlogModal({ onClose }) {
               value={formData.title}
               onChange={handleChange}
               className="w-full border rounded p-2"
+              required
             />
           </div>
+
           <div className="mb-4">
             <label className="block text-sm font-medium">Description</label>
             <textarea
@@ -76,8 +108,10 @@ function PostBlogModal({ onClose }) {
               value={formData.description}
               onChange={handleChange}
               className="w-full border rounded p-2"
+              rows={2}
             />
           </div>
+
           <div className="mb-4">
             <label className="block text-sm font-medium">Content</label>
             <textarea
@@ -87,11 +121,12 @@ function PostBlogModal({ onClose }) {
               className="w-full border rounded p-2 h-24"
             />
           </div>
+
           <div className="flex justify-end space-x-4">
             <button
               type="button"
-              className="bg-red-500 text-white px-4 py-2 rounded"
               onClick={onClose}
+              className="bg-red-500 text-white px-4 py-2 rounded"
             >
               Cancel
             </button>
@@ -103,7 +138,6 @@ function PostBlogModal({ onClose }) {
             </button>
           </div>
         </form>
-        <div className="text-center mt-2 text-gray-500"></div>
       </div>
     </div>
   );

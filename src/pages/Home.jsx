@@ -1,62 +1,49 @@
 import BlogData from "../data/BlogData";
 import BlogCard from "../components/BlogCard";
 import featuredImg from "../assets/blog1.png";
+import Footer from "../components/Footer";
+import point from "../assets/point.png";
 
-export default function Home() {
+export default function Home({ blogs }) {
   return (
     <div className="container mx-auto p-4 space-y-8">
       {/* Featured Blog Section */}
-      <div className="relative w-full h-150 rounded-lg overflow-hidden shadow-lg">
+      <div className="relative w-full rounded-[24px] overflow-hidden shadow-lg h-60 sm:h-96 lg:h-[480px]">
         <img
           src={featuredImg}
           alt="Featured Blog"
-          className="w-full h-150 object-cover"
-          // if image is not viewd
-          // onError={(e) => {
-          //   e.target.src = "https://via.placeholder.com/800x300";
-          // }}
+          className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-opacity-50 flex items-center justify-center text-white text-center p-4">
-          <div>
-            <h1 className="w-[171px] h-[33px] absolute top-[180px] left-[50px] opacity-100 font-black text-[25px] leading-[100%] tracking-normal font-sans">
-              Featured
-            </h1>
-
-            <h2
-              className="absolute w-[1100px] h-[85px] top-[250px] left-0 opacity-100  text-[50px] font-normal leading-[100%] tracking-normal"
-              style={{ fontFamily: "'Irish Grover', cursive" }}
-            >
-              Breaking into Product Design:
-            </h2>
-            <p
-              className="absolute w-[1100px] h-[85px] top-[300px] left-10 opacity-100  text-[50px] font-normal leading-[100%] tracking-normal"
-              style={{ fontFamily: "'Irish Grover', cursive" }}
-            >
-              Advice from Untitled Founder, Frankie
-            </p>
-
-            <p
-              className="absolute w-[1000px] h-[174px] top-[370px] left-[50px] opacity-100 text-[20px] font-black leading-[100%] tracking-normal"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              Let’s get one thing out of the way: you don’t need a fancy
-              Bachelor’s Degree to get into Product Design. We sat down with
-              Frankie Sallivan to talk about gatekeeping in product design and
-              how anyone can get into this growing industry.
-            </p>
-          </div>
+        <div className="absolute inset-0 flex flex-col justify-center text-white px-6 py-8 space-y-3 rounded-[24px]">
+          <h1 className="text-lg sm:text-xl md:text-2xl font-black">
+            Featured
+          </h1>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-grover">
+            Breaking into Product Design:
+          </h2>
+          <p className="text-xl sm:text-2xl md:text-3xl font-grover">
+            Advice from Untitled Founder, Frankie
+          </p>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-inter opacity-90 font-semibold">
+            Let’s get one thing out of the way: you don’t need a fancy
+            Bachelor’s Degree to get into Product Design. We sat down with
+            Frankie Sallivan to talk about gatekeeping in product design and who
+            anyone can get into this growing industry.
+          </p>
         </div>
+        <img
+          src={point}
+          alt="Decorative"
+          className="absolute bottom-4 right-4 w-20 h-20 object-contain"
+        />
       </div>
 
       {/* Recent Blog Posts Section */}
       <div className="mb-6">
-        <h1 className="text-3xl font-bold left-4 mb-4">Recent Blog Posts</h1>{" "}
-        {/* Added heading */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {BlogData.length ? (
-            BlogData.map((p) => <BlogCard key={p.id} post={p} />)
-          ) : (
-            <p>No posts yet.</p>
+        <h1 className="text-3xl font-bold left-4 mb-4">Recent Blog Posts</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+          {blogs.map((post) =>
+            post ? <BlogCard key={post.id} post={post} /> : null
           )}
         </div>
         <div className="text-center mt-4">
@@ -68,6 +55,9 @@ export default function Home() {
           </button>
         </div>
       </div>
+
+      {/* Footer only on Home Page */}
+      <Footer />
     </div>
   );
 }

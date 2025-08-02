@@ -1,4 +1,4 @@
 // src/state/atoms.js
-import { atom } from "jotai";
+import { atomWithStorage } from "jotai/utils";
 
-export const bookmarkedPostsAtom = atom([]);
+export const bookmarkedPostsAtom = atomWithStorage("bookmarkedPosts", []);
