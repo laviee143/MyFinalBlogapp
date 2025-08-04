@@ -1,0 +1,11 @@
+@import "tailwindcss";
+body {
+  -webkit-text-size-adjust: none; /* ✅ fixed */
+  text-size-adjust: none;         /* optional: non-prefixed version */
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap');
